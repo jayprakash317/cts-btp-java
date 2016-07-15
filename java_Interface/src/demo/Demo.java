@@ -102,7 +102,24 @@ class SomeClass implements NewInterface {
 	}
 }
 
-//--------------------------------------
+// --------------------------------------
+
+interface One {
+	default void a() {
+	}
+}
+
+interface Two {
+	default void a() {
+	}
+}
+
+class Abc implements One, Two {
+
+	public void a() {
+		Two.super.a();
+	}
+}
 
 public class Demo {
 

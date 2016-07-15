@@ -22,6 +22,10 @@ public class God {
 	public void manageLT(LivingThing live) {
 		live.eat();
 		live.sleep();
+		if (live instanceof Human) {
+			Human human = (Human) live;
+			human.study();
+		}
 		live.work();
 	}
 
