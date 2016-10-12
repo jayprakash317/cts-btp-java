@@ -23,6 +23,7 @@ class R1 {
 }
 
 class R2 {
+	
 	public synchronized void m1(R1 r1) {
 		System.out.println("T2 using R2");
 		System.out.println("T2 also trying for R1");
@@ -36,8 +37,8 @@ class R2 {
 
 class DWork implements Runnable {
 
-	R1 r1 = new R1();
-	R2 r2 = new R2();
+	R1 r1 = new R1();  // key1
+	R2 r2 = new R2();  // key2
 
 	@Override
 	public void run() {
@@ -65,7 +66,6 @@ public class Thread_DeadLock_Ex {
 		Thread thread2 = new Thread(dWork, "T2");
 
 		thread1.start();
-		Thread.sleep(1);
 		thread2.start();
 
 	}

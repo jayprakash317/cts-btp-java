@@ -2,7 +2,7 @@ package com.model;
 
 public class LongWrapper {
 
-	private Object key = new Object();
+	private Object key = new Object(); // monitor
 
 	private long l;
 
@@ -11,14 +11,14 @@ public class LongWrapper {
 	}
 
 	public long getValue() {
-		//synchronized (key) {
+		synchronized (key) {
 			return l;
-		//}
+		}
 	}
 
 	public void incrementValue() {
-		//synchronized (key) {
-			l = l + 1;
-		//}
+		synchronized (key) {
+			l = l + 1; // read --> increment --> write
+		}
 	}
 }

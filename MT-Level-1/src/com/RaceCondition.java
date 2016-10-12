@@ -9,13 +9,13 @@ class RaceCondition {
 		LongWrapper longWrapper = new LongWrapper(0L);
 		
 		Runnable r = () -> {
-			
-			for (int i = 0 ; i < 1_000 ; i++) {
+			for (int i = 0 ; i < 1000 ; i++) {
 				longWrapper.incrementValue();
 			}
 		};
 		
-		Thread[] threads = new Thread[1_000];
+		Thread[] threads = new Thread[1000];
+		
 		for (int i = 0 ; i < threads.length ; i++) {
 			threads[i] = new Thread(r);
 			threads[i].start();
@@ -25,6 +25,6 @@ class RaceCondition {
 			threads[i].join();
 		}
 		
-		System.out.println("Value = " + longWrapper.getValue());
+		System.out.println("Value = " + longWrapper.getValue());  // 1000 * 1000 ---> 1000000
 	}
 }
